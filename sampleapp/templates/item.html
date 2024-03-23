@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>item view</title>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<style>
+    body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  
+    background: rgba(198, 203, 211, 0.9);
+    
+    font-family: "lato", sans-serif;
+    background-size: 1000px 900px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-image: url("https://img.freepik.com/free-photo/hand-holding-paper-bag_23-2148081084.jpg?size=626&ext=jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+ 
+    .box {
+    background: #130707;
+    padding: 4em 4em 2em;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    box-shadow: 0 0 1em #222;
+    border-radius: 2px;
+    color: #e1d8d8; 
+  }
+    .container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+    }
+    
+    .head{
+  
+      
+    color: rgb(241, 237, 237);
+     font-size: 30px;
+  padding-left: 30px;
+    }
+    p{
+      color:rgb(218, 164, 48);
+      font-size:30px;
+    }
+</style>
+
+<body>
+                 
+  <div class="tm-black-bg tm-contact-text-container">
+  <div class="row">
+        
+          <div class="box">
+           
+              <div class="tm-list-item"> 
+ 
+        <a href="{% url 'Itempage' %}" class="btn  text-white"
+        style="margin-left: 700px; background-color: rgba(211, 25, 25, 0.7);border-radius: 20px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),">Add
+        item <i class="fa fa-plus"></i></a>
+   <center>
+          <table class="table-responsive profile_table">
+            <tbody class="p-2 m-2">
+                <tr class="personal">
+                    <td>
+                      <img src="{{itemdetails.image.url}}" width="300px" height="400px" >
+                    </td>
+                    <td class="head">
+                      <p >Item-{{ itemdetails.Name }}</h3>
+                      <p >Price-{{ itemdetails.price }}</p>
+                        <p class="tm-list-item-description">orderno-{{ itemdetails.orderno }}</p>
+              
+                        <p class="tm-list-item-description">Qunatity-{{ itemdetails.qunatity}}</p>
+                        <p class="tm-list-item-description">Category-{{ itemdetails.category }}</p>  
+                        <p >Description-{{ itemdetails.description}}</p>    
+                        <p>  <a rol="button"  class="btn btn-outline-info"href="{% url 'editpage' itemdetails.id %}">EDIT</a>
+                      <a rol="button"   class="btn btn-outline-info"style="background-color: rgba(211, 25, 25, 0.7);" href="{% url 'delete' itemdetails.id %}">DELETE</a></p>
+                    </td>
+                </tr>  
+              </tbody></table>  </center>
+      </div>
+    </div>
+</div>
+</div>
+                  </div> 
+              </div>
+          </div>
+  
+</body>
+</html>

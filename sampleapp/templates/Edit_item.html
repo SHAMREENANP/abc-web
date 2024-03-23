@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>
+    EDIT ITEM
+  </title>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous"> 
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<style>
+    body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  
+    background: rgba(198, 203, 211, 0.9);
+    
+    font-family: "lato", sans-serif;
+    background-size: 1000px 900px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-image: url("https://img.freepik.com/free-photo/online-shopping-shopping-cart-placed-alongside-notebook-blue_1150-19158.jpg?size=626&ext=jpg&ga=GA1.1.843787371.1704956453&semt=ais");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+ 
+    .box {
+    background: #130707;
+    padding: 4em 4em 2em;
+    max-width: 700px;
+    margin: 50px auto 0;
+    box-shadow: 0 0 1em #222;
+    border-radius: 2px;
+    color: white; 
+  }
+    .container{
+    position: absolute;
+    left: 30%;
+    top: 27%;
+    }
+    .inp {
+  color: rgb(255, 255, 255);
+  background: transparent;
+  width: 180px; 
+  
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 12px 20px;
+  outline: none;
+  
+  z-index: 1;
+ 
+  
+}
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  background-color:  #47b2e4;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+</style>
+  <body>
+      <div class="tm-list-item"> 
+          <div class="tm-black-bg tm-contact-text-container">
+              <div class="box">
+        
+          <div class="row">
+              <div class="tm-form-group"> 
+                <center>
+                    <h1 class="mb-0" style="font-weight: bolder;color: rgb(218, 164, 48);"><u>Item Details </u> </h1><br>
+                    {% if prdts.image %}
+                    <img src="{{ prdts.image.url }}" width="200px" height="110px"><br>                                                                  
+                  
+                    {% else %}
+                    <img src="{% static 'image/book3.jpg' %}" width="200px" height="100px"><br>                                                                  
+                
+            
+                    {% endif %}
+                 
+                </center>
+                  <form method="post" action="/edit_item/{{ prdts.pk }}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      
+                    
+                
+                   
+          <table class="table-responsive profile_table">
+          <tbody class="p-2 m-2">
+         
+            
+       
+            <tr>
+              <td>
+                  <p style="color:azure ; margin-bottom: 0px;">Item Name:</p>
+                  <input type="text" class="inp" name="Name"  
+                    style="width: 280px; text-transform: capitalize;" value="{{ prdts.Name }}"> 
+              </td>
+              <td>
+                <p style=" color:azure ;margin-left: 12px; margin-bottom: 0px;">Price</p>
+             
+                  <input type="text"   class="inp" name="price"  
+                  style="width: 280px; margin-left :12px ; text-transform: capitalize;" value="{{ prdts.price}}"> 
+                </div>
+              </td>
+          </tr>
+          <tr>
+            <td>
+                <p style="color:azure ; margin-bottom: 0px;">Order Number</p>
+                <input type="text" class="inp" name="orderno"  
+                  style="width: 280px; text-transform: capitalize;" value="{{ prdts.orderno }}"> 
+            </td>
+            <td>
+              <p style=" color:azure ;margin-left: 12px; margin-bottom: 0px;">Qunatity</p>
+           
+                <input type="text"   class="inp" name="qunatity"  
+                style="width: 280px; margin-left :12px ; text-transform: capitalize;" value="{{ prdts.qunatity}}"> 
+              </div>
+            </td>
+        </tr>
+    
+        <tr>
+          <td>
+              <p style="color:azure ; margin-bottom: 0px;">category</p>
+              <input type="text" class="inp" name="category"  
+                style="width: 280px; text-transform: capitalize;" value="{{ prdts.category }}"> 
+          </td>
+          <td>
+            <p style=" color:azure ;margin-left: 12px; margin-bottom: 0px;">Description:</p>
+         
+              <input type="text"   class="inp" name="description"  
+              style="width: 280px; margin-left :12px ; text-transform: capitalize;" value="{{ prdts.description}}"> 
+            </div>
+          </td>
+      </tr>
+      <tr>
+        <td> <h2   style="color: rgb(218, 164, 48);font-size: large;"><u >Change Item_pic</u></h2></td>
+    <td >
+        <input type="file" name="file" class="inp" style="width: 280px;" ></td>
+</tr>
+</tbody>
+    </table>
+    <button type="submit" class="submitBtn">EDIT</button>
+          
+</form>
+</div>
+<div class="col-sm-3"></div>
+</div>
+</div>
+  </body>
+  </html>

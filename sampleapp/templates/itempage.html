@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD ITEM</title>
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+ 
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Sen:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<style>
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  
+    background: rgba(12, 27, 48, 0.9);
+    
+    font-family: "lato", sans-serif;
+    background-size: 1000px 900px;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-attachment: fixed;
+  background-image: url("https://img.freepik.com/free-photo/finance-elements-frame_23-2148080960.jpg?size=626&ext=jpg&ga=GA1.1.843787371.1704956453&semt=ais");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  }
+    
+  a {
+    color: #47b2e4;
+    text-decoration: none;
+  }
+  
+  
+  .form {
+    background: #130707;
+    padding: 4em 4em 2em;
+    max-width: 500px;
+    margin: 50px auto 0;
+    box-shadow: 0 0 1em #c0b3b3;
+    border-radius: 2px;
+    color: #eee4e4; 
+  }
+
+
+  .section-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-left: 60px;
+  padding-bottom: 10px;
+  position: relative;
+  color: rgb(218, 164, 48);
+}
+.inputContainer {
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin-bottom: 17px;
+}
+
+
+
+
+::placeholder {
+  color: transparent;
+}
+.label {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 0 4px;
+ 
+  color: rgb(39, 67, 119);;
+  font-size: 16px;
+  transition: 0.5s;
+  z-index: 0;
+}
+.submitBtn {
+  display: block;
+  margin-left: auto;
+  padding: 15px 30px;
+  border: none;
+  background-color:  #47b2e4;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 30px;
+}
+
+.submitBtn:hover {
+  background-color: rgb(212, 48, 27);
+  transform: translateY(-2px);
+}
+.input:focus + .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(231, 231, 237);
+}
+.input:focus {
+  border: 2px solid rgb(251, 249, 249);
+}
+.input:not(:placeholder-shown)+ .label {
+  top: -7px;
+  left: 3px;
+  z-index: 10;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input[type=text], input[type=number],input[type=file]  {
+  width: 70%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 2px solid #eae2e2;
+  box-sizing: border-box;
+  
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: rgb(32, 31, 31);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+
+.inp {
+  color: rgb(255, 255, 255);
+  background: transparent;
+  width: 280px; 
+  
+  border: 1px solid #DADCE0;
+  border-radius: 7px;
+  font-size: 16px;
+  padding: 20px 20px;
+  outline: none;
+  
+  z-index: 1;
+ 
+  
+}
+
+</style>
+<body>
+ 
+  <div class="container-fluid">  
+  <div  class="tm-page-content" >
+  <div class="container">
+  
+  <div class="tm-black-bg tm-contact-text-container">
+
+  <form action="{% url 'Additem' %}" method="post" class="form pt-4 pb-6" enctype="multipart/form-data">
+          {% csrf_token %}
+        
+  <a href="{% url 'Itemlist' %}" class="btn  text-white"
+          style="margin-left: 400px; background-color: rgb(252, 3, 3,0.7);border-radius: 50px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);font-size :20px;padding: 5px;color: white;">View item </a>
+  <h1 class="section-title"><U>Enter&nbsp;&nbsp; Item&nbsp;&nbsp; Details</U></h1>
+  <table class="table-responsive profile_table">
+  <tbody class="p-2 m-2">
+      <tr class="personal">
+          <td>
+            <label for="Name">Item Name:</label>
+           
+          </td>
+          <td>
+            <input type="text"  name="Name"  class="inp" style="width: 380px; text-transform: capitalize;"><br>
+          </td>
+      </tr>
+      <tr class="personal">
+                <td>
+                  <label for="Name">Price  :</label>
+                
+                </td>
+                <td>
+                  <input type="text"  name="price"  class="inp" style="width: 380px;">
+              </td>
+      </tr>
+        
+      <tr class="personal">
+            <td>   
+          <label for="Name">order No:</label>
+          </td>
+          <td>
+          <input type="text"  name="orderno"  class="inp" style="width: 380px;">
+          </td>
+      </tr>
+      <tr class="personal">
+          <td>   
+          <label for="qunatity">Qunatity</label>
+          </td>
+          <td>
+          <input type="text"  name="qunatity"  class="inp" style="width: 380px;">
+          </td>
+      </tr>
+     <tr class="personal">
+        <td>   
+        <label for="category">Category:</label>
+        </td>
+        <td>
+        <input type="text"  name="category"  class="inp" style="width: 380px;">
+        </td>
+     </tr>
+     <tr class="personal">
+         <td>   
+         <label for="description">Description:</label>
+        </td>
+        <td>
+       <input type="text"  name="description"  class="inp"style="width: 380px; height:100px;">
+       </td>
+    </tr>
+    <tr class="personal">
+      <td>   
+        <label for="description">Item image<b style="color: red;">*</b></label>
+        </td>
+        <td>
+        <input type="file"  name="file"  class="inp" style="width: 380px;">
+        </td>
+     </tr>        
+        
+       
+</tbody></table>
+<input type="submit" class="submitBtn" value="Add Item">
+       
+</form>
+<br>
+    
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
